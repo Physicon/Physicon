@@ -1,0 +1,100 @@
+.header {
+    display: flex;
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 960px;
+    min-height: 73px;
+    justify-content: space-between;
+}
+
+.header__left {
+    display: flex;
+}
+
+.header__right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo {
+    @mixin icon "svg/logo.svg";
+
+    display: block;
+    margin: 10px auto;
+}
+
+.header__menu {
+    position: relative;
+    margin: 23px;
+    width: 35px;
+}
+
+.header__menu-btn {
+    position: absolute;
+    top: 2px;
+    width: 100%;
+    height: 4px;
+    background-color: #00c1ff;
+
+    &:before,
+    &:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        background-color: #00c1ff;
+    }
+
+    &:before {
+        top: 10px;
+    }
+
+    &:after {
+        top: 20px;
+    }
+}
+
+.header__buttons {
+    display: flex;
+}
+
+.header__btn {
+    display: flex;
+    margin: 0 4px;
+    border-radius: 10px;
+    width: 157px;
+    height: 43px;
+    justify-content: center;
+    align-items: center;
+    font-weight: 300;
+    font-size: 17.5px;
+    cursor: pointer;
+    box-sizing: border-box;
+
+    &--default {
+        border: 1px solid #00c1ff;
+        color: #00c1ff;
+    }
+
+    &--prim {
+        background: linear-gradient(#00c0ff, #00c0ff);
+        color: #fff;
+
+        &:hover {
+            background: linear-gradient(#00bbeb, #004fe5)
+        }
+    }
+}
+
+.header__title {
+    text-indent: -9999px;
+}
+
+.header__basket {
+    margin-left: 18px;
+}
+
+.header__basket-icon {
+    @mixin icon "svg/cart.svg";
+}
