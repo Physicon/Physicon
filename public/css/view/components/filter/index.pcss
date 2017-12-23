@@ -1,0 +1,53 @@
+.filter {
+    display: flex;
+    margin-top: 30px;
+    padding: 0 15px;
+}
+
+.filter__col {
+    width: 25%;
+    padding: 0 11px;
+
+    &:first-child {
+        padding-left: 0;
+    }
+
+    &:last-child {
+        padding-right: 0;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.filter__select {
+    padding: .3em .5em;
+    height: 32px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #706f6f;
+    width: 100%;
+
+    &:focus {
+        border-color: #129fea;
+    }
+}
+
+.filter__search {
+    padding: .3em .5em;
+    height: 32px;
+    font-size: 14px;
+    border: 1px solid #706f6f;
+    border-radius: 6px;
+    box-sizing: border-box;
+
+    &:focus {
+        border-color: #129fea;
+    }
+}
+
+.filter__search-btn {
+    @mixin icon "raster/icon-search-25.png";
+    margin-left: 6px;
+    border: none;
+    cursor: pointer;
+}
