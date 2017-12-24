@@ -1,0 +1,7 @@
+export const FETCH_LIST_START = 'FETCH_LIST_START'
+export const FETCH_LIST_SUCCESS = 'FETCH_LIST_SUCCESS'
+export const FETCH_LIST_FAILURE = 'FETCH_LIST_FAILURE'
+
+export const ADD_FILTER = 'ADD_FILTER'
+
+export const BUY_COURSE = 'BUY_COURSE'

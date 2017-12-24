@@ -1,34 +1,53 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+
+import {
+    fetchCoursesList
+} from '../../actions'
+
+import {
+    getList,
+    getFilter,
+    getFilterList
+} from '../../selectors'
+
+import Course from '../Course'
 
 class Courseslist extends Component {
     constructor (props) {
         super(props)
     }
 
-    render() {
-        return (
-            <div className="courseslist">
-                <div className="course">
-                    <div className="course__pic">
-                        <img src="https://www.imumk.ru/covers/80.png" className="course__img" alt="Алгебра" />
-                        <div className="course__try">
-                            <a href="#" className="course__try-btn">Попробовать</a>
-                        </div>
-                    </div>
-                    <div className="course__info">
-                        <div className="course__row course__row--title">Алгебра</div>
-                        <div className="course__row course__row--grade">7 класс</div>
-                        <div className="course__row course__row--genre">Рабочая тетрадь</div>
+    componentDidMount () {
+        this.props.fetchCoursesList()
+    }
 
-                        <a href="/offer/103" className="course__meta">Подробнее</a>
-                        <a href="#" className="course__controls">
-                            Купить за 140 руб.
-                        </a>
-                    </div>
+    render() {
+        const list = this.props.list.length && getFilterList(this.props.list, this.props.filter)
+
+        return (
+            <div className="courseslist__wrapper">
+                {
+                    (!!this.props.filter.title || !!this.props.filter.subj || !!this.props.filter.genre || !!this.props.filter.grade) &&
+                    <h3 className="courseslist__desc">Результаты поиска:</h3>
+                }
+                <div className="courseslist">
+                    {
+                        !!list.length && list.map((item, index) => <Course key={index} item={item}/>)
+                    }
                 </div>
             </div>
         )
     }
 }
 
-export default Courseslist
+const mapStateToProps = (state, ownProps) => ({
+    list: getList(state, ownProps),
+    filter: getFilter(state, ownProps)
+})
+
+const mapDispatchToProps = {
+    fetchCoursesList
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Courseslist)

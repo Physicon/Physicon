@@ -1,67 +1,73 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+
+import {
+    setFilter
+} from '../../actions'
+
+import  {
+    getFilter
+} from '../../selectors'
+
+const subj = ["Алгебра", "Английский язык", "Биология", "География", "Геометрия", "Естествознание", "Информатика", "История", "Математика", "Обществознание", "Окружающий мир", "Робототехника", "Русский язык", "Физика", "Химия"]
+const genre = ["Задачник", "Рабочая тетрадь", "Тренажер ВПР-2017", "Тренажер ЕГЭ-2018"]
+const grade = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"]
+
 
 class Filter extends Component {
     constructor (props) {
         super(props);
+    }
 
+    changeSelect (name, {target}) {
+        this.props.setFilter({[name]: target.value})
+    }
 
+    search (e) {
+        e.preventDefault();
+
+        this.props.setFilter({'title': this.searchInput.value})
     }
 
     render() {
+        const {filter} = this.props
+
         return (
             <form className="filter">
                 <div className="filter__col">
-                    <select className="filter__select" id="subj" name="subj">
+                    <select value={filter.subj} className="filter__select" id="subj" name="subj" onChange={this.changeSelect.bind(this, "subj")}>
                         <option value="">Все предметы</option>
-                        <option>Алгебра</option>
-                        <option>Английский язык</option>
-                        <option>Биология</option>
-                        <option>География</option>
-                        <option>Геометрия</option>
-                        <option>Естествознание</option>
-                        <option>Информатика</option>
-                        <option>История</option>
-                        <option>Математика</option>
-                        <option>Обществознание</option>
-                        <option>Окружающий мир</option>
-                        <option>Робототехника</option>
-                        <option>Русский язык</option>
-                        <option>Физика</option>
-                        <option>Химия</option>
+                        {subj.map((val, index)=> <option key={index} value={val}>{val}</option>)}
                     </select>
                 </div>
                 <div className="filter__col">
-                    <select className="filter__select" id="genre" name="genre">
+                    <select value={filter.genre} className="filter__select" id="genre" name="genre" onChange={this.changeSelect.bind(this, "genre")}>
                         <option value="">Все жанры</option>
-                        <option>Задачник</option>
-                        <option>Рабочая тетрадь</option>
-                        <option>Тренажер ВПР-2017</option>
-                        <option>Тренажер ЕГЭ-2018</option>
+                        {genre.map((val, index)=> <option key={index} value={val}>{val}</option>)}
                     </select>
                 </div>
                 <div className="filter__col">
-                    <select className="filter__select" id="grade" name="grade">
+                    <select value={filter.grade} className="filter__select" id="grade" name="grade" onChange={this.changeSelect.bind(this, "grade")}>
                         <option value="">Все классы</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
-                        <option>11</option>
+                        {grade.map((val, index)=> <option key={index} value={val}>{val}</option>)}
                     </select>
                 </div>
                 <div className="filter__col">
-                    <input className="filter__search" type="text" placeholder="Поиск" id="search" name="search"/>
-                    <button className="filter__search-btn" type="submit" title="Найти"></button>
+                    <input className="filter__search" type="text" placeholder={filter.title || "Поиск"} id="search" name="search" ref={(input) => { this.searchInput = input }}/>
+                    <button className="filter__search-btn" type="submit" title="Найти" onClick={this.search.bind(this)}></button>
                 </div>
             </form>
         )
     }
 }
 
-export default Filter
+const mapStateToProps = (state, ownProps) => ({
+    filter: getFilter(state, ownProps)
+})
+
+
+const mapDispatchToProps = {
+    setFilter
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filter)
