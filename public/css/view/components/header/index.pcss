@@ -92,7 +92,30 @@
 }
 
 .header__basket {
+    position: relative;
     margin-left: 18px;
+}
+
+.header__basket-count {
+    position: absolute;
+    top: 2px;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 18px;
+    height: 18px;
+    background: #e5332a;
+    font-size: 11px;
+    color: #fff;
+    border-radius: 50%;
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity .3s, transform .3s ease, -webkit-transform .3s ease;
+
+    &-enter {
+        transform: scale(2);
+    }
 }
 
 .header__basket-icon {

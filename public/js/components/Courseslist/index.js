@@ -36,6 +36,9 @@ class Courseslist extends Component {
                         !!list.length && list.map((item, index) => <Course key={index} item={item}/>)
                     }
                 </div>
+                {
+                    !list.length && <div className="courseslist__empty">Ничего не найдено</div>
+                }
             </div>
         )
     }

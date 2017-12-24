@@ -1,4 +1,11 @@
 import React, {Component} from 'react'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
+import {connect} from 'react-redux'
+
+import {
+    getBasket
+} from '../../selectors'
 
 class Header extends Component {
     constructor (props) {
@@ -25,7 +32,14 @@ class Header extends Component {
                     </div>
                     <div className="header__basket">
                         <div className="header__basket-icon"></div>
-                        <div className="header__basket-count"></div>
+                        {!!this.props.basket.length &&
+                            <ReactCSSTransitionGroup
+                                transitionName="header__basket-count"
+                                transitionEnterTimeout={100}
+                                transitionLeaveTimeout={1}>
+                                <div key={this.props.basket.length} className={`header__basket-count`}>{this.props.basket.length}</div>
+                            </ReactCSSTransitionGroup>
+                        }
                     </div>
                 </div>
             </div>
@@ -33,4 +47,9 @@ class Header extends Component {
     }
 }
 
-export default Header
+const mapStateToProps = (state, ownProps) => ({
+    basket: getBasket(state, ownProps)
+})
+
+
+export default connect(mapStateToProps, null)(Header)

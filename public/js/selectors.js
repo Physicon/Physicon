@@ -1,11 +1,15 @@
 import R from 'ramda'
 
-export const getList = (state, ownProps) => {
+export const getList = (state) => {
     return state.list
 }
 
-export const getFilter = (state, ownProps) => {
+export const getFilter = (state) => {
     return state.filter
+}
+
+export const getBasket = (state) => {
+    return state.basket
 }
 
 export const getFilterList = (list, filter) => {

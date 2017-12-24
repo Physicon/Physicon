@@ -3,11 +3,11 @@ import {routerReducer} from 'react-router-redux'
 
 import list from './list'
 import filter from './filter'
-import buy from './buy'
+import basket from './basket'
 
 export default combineReducers({
     routing: routerReducer,
     list,
     filter,
-    buy
+    basket
 })
