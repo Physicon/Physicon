@@ -1,5 +1,10 @@
 .header {
+
+}
+
+.header__inner {
     display: flex;
+    position: relative;
     margin: 0 auto;
     padding: 0 20px;
     max-width: 960px;
@@ -19,6 +24,7 @@
 
 .header__logo {
     @mixin icon "svg/logo.svg";
+    background-size: 100%;
 
     display: block;
     margin: 10px auto;
@@ -120,4 +126,84 @@
 
 .header__basket-icon {
     @mixin icon "svg/cart.svg";
+
+    cursor: pointer;
+}
+
+.header__course-added {
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 100%;
+    justify-content: center;
+
+    &-enter {
+        display: flex;
+    }
+}
+
+.header__course-added-inner {
+    padding: 15px 30px;
+    background-color: #009ed1;
+    color: #fff;
+    border-radius: 10px;
+    opacity: 0.8;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+@media only screen and (max-width: 960px) {
+    .header__inner {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .header__left {
+        width: 100%;
+    }
+
+    .header__right {
+        padding: 17px 0 15px;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .header__btn {
+        margin-bottom: 10px;
+        width: 100%;
+
+        &:first-child {
+            display: none;
+        }
+    }
+
+    .header__buttons {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .header__basket {
+        margin-left: 0;
+    }
+
+    .header__menu {
+        position: absolute;
+        top: 0;
+        left: 20px;
+    }
+}
+
+@media only screen and (max-width: 490px) {
+    .header__logo {
+        width: 150px;
+        background-position-y: 15px;
+    }
+
+    .header__course-added-inner {
+        padding: 15px 0;
+        font-size: 13px;
+        width: 300px;
+        text-align: center;
+    }
 }

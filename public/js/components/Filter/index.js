@@ -34,27 +34,29 @@ class Filter extends Component {
 
         return (
             <form className="filter">
-                <div className="filter__col">
-                    <select value={filter.subj} className="filter__select" id="subj" name="subj" onChange={this.changeSelect.bind(this, "subj")}>
-                        <option value="">Все предметы</option>
-                        {subj.map((val, index)=> <option key={index} value={val}>{val}</option>)}
-                    </select>
-                </div>
-                <div className="filter__col">
-                    <select value={filter.genre} className="filter__select" id="genre" name="genre" onChange={this.changeSelect.bind(this, "genre")}>
-                        <option value="">Все жанры</option>
-                        {genre.map((val, index)=> <option key={index} value={val}>{val}</option>)}
-                    </select>
-                </div>
-                <div className="filter__col">
-                    <select value={filter.grade} className="filter__select" id="grade" name="grade" onChange={this.changeSelect.bind(this, "grade")}>
-                        <option value="">Все классы</option>
-                        {grade.map((val, index)=> <option key={index} value={val}>{val}</option>)}
-                    </select>
-                </div>
-                <div className="filter__col">
-                    <input className="filter__search" type="text" placeholder={filter.title || "Поиск"} id="search" name="search" ref={(input) => { this.searchInput = input }}/>
-                    <button className="filter__search-btn" type="submit" title="Найти" onClick={this.search.bind(this)}></button>
+                <div className="filter__inner">
+                    <div className="filter__col">
+                        <select value={filter.subj} className="filter__select" id="subj" name="subj" onChange={this.changeSelect.bind(this, "subj")}>
+                            <option value="">Все предметы</option>
+                            {subj.map((val, index)=> <option key={index} value={val}>{val}</option>)}
+                        </select>
+                    </div>
+                    <div className="filter__col">
+                        <select value={filter.genre} className="filter__select" id="genre" name="genre" onChange={this.changeSelect.bind(this, "genre")}>
+                            <option value="">Все жанры</option>
+                            {genre.map((val, index)=> <option key={index} value={val}>{val}</option>)}
+                        </select>
+                    </div>
+                    <div className="filter__col">
+                        <select value={filter.grade} className="filter__select" id="grade" name="grade" onChange={this.changeSelect.bind(this, "grade")}>
+                            <option value="">Все классы</option>
+                            {grade.map((val, index)=> <option key={index} value={val}>{val}</option>)}
+                        </select>
+                    </div>
+                    <div className="filter__col">
+                        <input className="filter__search" type="text" placeholder={filter.title || "Поиск"} id="search" name="search" ref={(input) => { this.searchInput = input }}/>
+                        <button className="filter__search-btn" type="submit" title="Найти" onClick={this.search.bind(this)}></button>
+                    </div>
                 </div>
             </form>
         )

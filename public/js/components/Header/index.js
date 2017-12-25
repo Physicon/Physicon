@@ -15,33 +15,45 @@ class Header extends Component {
     render() {
         return (
             <div className="header">
-                <div className="header__left">
-                    <a href="/" className="header__logo">
-                        <h2 className="header__title">Облако знаний</h2>
-                    </a>
-                    <div className="header__menu">
-                        <div className="header__menu-btn">
+                <div className="header__inner">
+                    <div className="header__left">
+                        <a href="/" className="header__logo">
+                            <h2 className="header__title">Облако знаний</h2>
+                        </a>
+                        <div className="header__menu">
+                            <div className="header__menu-btn">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="header__right">
-                    <div className="header__buttons">
-                        <div className="header__btn header__btn--prim">Курсы</div>
-                        <div className="header__btn header__btn--default">Регистрация</div>
-                        <div className="header__btn header__btn--prim">Вход</div>
-                    </div>
-                    <div className="header__basket">
-                        <div className="header__basket-icon"></div>
-                        {!!this.props.basket.length &&
+                    <div className="header__right">
+                        <div className="header__buttons">
+                            <div className="header__btn header__btn--prim">Курсы</div>
+                            <div className="header__btn header__btn--default">Регистрация</div>
+                            <div className="header__btn header__btn--prim">Вход</div>
+                        </div>
+                        <div className="header__basket">
+                            <div className="header__basket-icon"></div>
+                            {!!this.props.basket.length &&
                             <ReactCSSTransitionGroup
                                 transitionName="header__basket-count"
                                 transitionEnterTimeout={100}
                                 transitionLeaveTimeout={1}>
                                 <div key={this.props.basket.length} className={`header__basket-count`}>{this.props.basket.length}</div>
                             </ReactCSSTransitionGroup>
-                        }
+                            }
+                        </div>
                     </div>
                 </div>
+                {!!this.props.basket.length &&
+                <ReactCSSTransitionGroup
+                    transitionName="header__course-added"
+                    transitionEnterTimeout={2000}
+                    transitionLeaveTimeout={1}>
+                    <div key={this.props.basket.length} className={`header__course-added`}>
+                        <div className={`header__course-added-inner`}>Курс успешно добавлен в корзину.</div>
+                    </div>
+                </ReactCSSTransitionGroup>
+                }
             </div>
         )
     }

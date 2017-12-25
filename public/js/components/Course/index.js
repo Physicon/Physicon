@@ -20,7 +20,7 @@ class Course extends Component {
                     <img src={item.urlImg} className="course__img" alt="Алгебра" />
                     {item.status === "demo" &&
                         <div className="course__try">
-                            <a href="#" className="course__try-btn">Попробовать</a>
+                            <a href="" className="course__try-btn">Попробовать</a>
                         </div>
                     }
                 </div>

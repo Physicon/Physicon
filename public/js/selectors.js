@@ -18,7 +18,7 @@ export const getFilterList = (list, filter) => {
             (!filter.subj || item.subject === filter.subj) &&
             (!filter.genre || item.genre === filter.genre) &&
             (!filter.grade || item.grade.split(";").includes(filter.grade)) &&
-            (!filter.title || item.title.includes(filter.title))
+            (!filter.title || item.title.toLowerCase().includes(filter.title.toLowerCase()))
         )
     }, list)
 }
