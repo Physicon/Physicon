@@ -5,3 +5,5 @@ export const FETCH_LIST_FAILURE = 'FETCH_LIST_FAILURE'
 export const ADD_FILTER = 'ADD_FILTER'
 
 export const BUY_COURSE = 'BUY_COURSE'
+
+export const CHANGE_CURRENCY = 'CHANGE_CURRENCY'

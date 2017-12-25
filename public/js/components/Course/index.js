@@ -5,6 +5,9 @@ import {
     buyCourse
 } from '../../actions'
 
+import  {
+    getCurrency
+} from '../../selectors'
 
 class Course extends Component {
     constructor (props) {
@@ -12,12 +15,12 @@ class Course extends Component {
     }
 
     render() {
-        const {item} = this.props
-
+        const {item, currency} = this.props
+        console.log(item);
         return (
             <div className="course">
                 <div className="course__pic">
-                    <img src={item.urlImg} className="course__img" alt="Алгебра" />
+                    <img src={`https://www.imumk.ru/covers/${item.courseId}.png`} className="course__img" alt={item.title} />
                     {item.status === "demo" &&
                         <div className="course__try">
                             <a href="" className="course__try-btn">Попробовать</a>
@@ -31,7 +34,7 @@ class Course extends Component {
 
                     <a href="" className="course__meta">Подробнее</a>
                     <div className="course__controls" onClick={this.props.buyCourse.bind(this, item)}>
-                        Купить за {item.price} руб.
+                        Купить за {currency.rub ? item.price + ` руб.` : item.priceBonus + ` бон.`}
                     </div>
                 </div>
             </div>
@@ -39,8 +42,12 @@ class Course extends Component {
     }
 }
 
+const mapStateToProps = (state, ownProps) => ({
+    currency: getCurrency(state, ownProps)
+})
+
 const mapDispatchToProps = {
     buyCourse
 }
 
-export default connect(null, mapDispatchToProps)(Course)
+export default connect(mapStateToProps, mapDispatchToProps)(Course)

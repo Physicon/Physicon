@@ -3,12 +3,20 @@ import {
     FETCH_LIST_SUCCESS,
     FETCH_LIST_FAILURE,
     ADD_FILTER,
-    BUY_COURSE
+    BUY_COURSE,
+    CHANGE_CURRENCY
 } from '../constants/actionTypes'
 
 import {
     fetchCoursesList as fetchCoursesListApi
 } from '../api'
+
+export const toggleSwitch = currency => dispatch => {
+    dispatch({
+        type: CHANGE_CURRENCY,
+        payload: {rub: currency}
+    })
+}
 
 export const setFilter = filter => dispatch => {
     dispatch({

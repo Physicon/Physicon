@@ -1,5 +1,9 @@
 import R from 'ramda'
 
+export const getCurrency = (state) => {
+    return state.currency
+}
+
 export const getList = (state) => {
     return state.list
 }
