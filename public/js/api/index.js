@@ -3,7 +3,7 @@ import request from 'superagent'
 export const fetchCoursesList = () => {
     return new Promise((resolve, reject) => {
         request
-            .post(`http://api.qa.imumk.ru/api/mobilev1/update`)
+            .post(`https://api.qa.imumk.ru/api/mobilev1/update`)
             .field('data', "")
             .then(({body}) => {
                 resolve(body)
