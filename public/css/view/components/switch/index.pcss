@@ -8,6 +8,7 @@
 
 .switch__wrapper {
     position: absolute;
+    margin: 0 20px;
     top: 0;
     right: 0;
     height: 52px;
@@ -72,4 +73,15 @@
 
 .switch__slider--round:before {
     border-radius: 50%;
+}
+
+@media only screen and (max-width: 620px) {
+    .switch__wrapper {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0 20px;
+        width: 100%;
+        justify-content: center;
+        top: 50px;
+    }
 }
