@@ -1,11 +1,5 @@
 # Physicon
 
-#### [Demo](https://physicon-test-app.herokuapp.com/)
-
-#### API
-
-[Mock Data](https://www.mocky.io/v2/5a3f94a92e0000f70c44fe7c)
-
 #### Настройка для локального запуска
 
 1. Клонируем репозиторий. git clone https://github.com/andryushkov-ky/Physicon.git
