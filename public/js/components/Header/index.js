@@ -10,6 +10,18 @@ import {
 class Header extends Component {
     constructor (props) {
         super(props)
+
+        this.state = {
+            menuOpen: false
+        }
+    }
+
+    toggleMenu () {
+        this.setState((prevState) => {
+            return {
+                menuOpen: !prevState.menuOpen
+            }
+        })
     }
 
     render() {
@@ -20,8 +32,15 @@ class Header extends Component {
                         <a href="/" className="header__logo">
                             <h2 className="header__title">Облако знаний</h2>
                         </a>
-                        <div className="header__menu">
-                            <div className="header__menu-btn">
+                        <div className="header__menu" onClick={this.toggleMenu.bind(this)}>
+                            <div className="header__menu-btn" >
+                            </div>
+                            <div className={`header__menu-list ${this.state.menuOpen && 'header__menu-list--open'}`}>
+                                <div className="header__list-item">О проекте</div>
+                                <div className="header__list-item">Новости</div>
+                                <div className="header__list-item">Приобрести</div>
+                                <div className="header__list-item">Скачать</div>
+                                <div className="header__list-item">Поддержка</div>
                             </div>
                         </div>
                     </div>
